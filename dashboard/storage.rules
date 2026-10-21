@@ -1,0 +1,11 @@
+rules_version = '2';
+service firebase.storage {
+ match /b/{bucket}/o {
+  match /task-images/{taskId}/{fileName} {
+   allow read, delete: if request.auth != null && request.auth.uid == 'REPLACE_WITH_OWNER_UID';
+   allow create, update: if request.auth != null && request.auth.uid == 'REPLACE_WITH_OWNER_UID'
+     && request.resource.size < 10 * 1024 * 1024
+     && request.resource.contentType.matches('image/.*');
+  }
+ }
+}

@@ -1,0 +1,18 @@
+[Unit]
+Description=AgentDesk Telegram approvals and shared channel receiver
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/agent-dashboard-starter/.venv/bin/python %h/agent-dashboard-starter/agentdesk/telegram_broker.py
+WorkingDirectory=%h/agent-dashboard-starter/agentdesk
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=%h/.config/agentdesk/environment
+Restart=on-failure
+RestartSec=10
+UMask=0077
+StandardOutput=append:%h/.local/share/agentdesk/telegram-broker.log
+StandardError=append:%h/.local/share/agentdesk/telegram-broker.log
+
+[Install]
+WantedBy=default.target

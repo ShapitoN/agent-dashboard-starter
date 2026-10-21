@@ -1,0 +1,23 @@
+<title>Карта агентов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;500;600&family=Ubuntu+Sans+Mono:wght@400&display=swap">
+<style>
+/* Тема одна, тёмная — палитра панели waybar, задана в graph.css */
+:root { color-scheme: dark; }
+html, body { height: 100%; }
+body { background: #1e1f24; overflow: hidden; }
+@media (max-width: 820px) { body { overflow: auto; } }
+/*GRAPH_CSS*/
+</style>
+<div id="ag"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script>
+/*GRAPH_JS*/
+</script>
+<script>
+const G = /*GRAPH_DATA*/null;
+mountAgentGraph(document.getElementById('ag'), G, {
+  footer: 'Страница обновляется по понедельникам. Живая версия — на Agent Dashboard, раз в 30 минут.'
+});
+</script>

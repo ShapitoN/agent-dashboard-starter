@@ -1,0 +1,5 @@
+AGENTDESK_WORKSPACE=/home/USER/agent-workspace
+AGENTDESK_BASE=/home/USER/agent-workspace/ClaudeAIAgent
+AGENTDESK_DASHBOARD_URL=https://YOUR_PROJECT.web.app
+AGENTDESK_CODEX_BIN=/absolute/path/to/codex
+AGENTDESK_CONTEXT=/home/USER/agent-workspace/CONTEXT.md

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="agent-graph.css">
+
+  <!-- Firebase SDK (compat) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" class="login-screen hidden">
+  <div class="login-box">
+    <div class="login-logo">⚡</div>
+    <h1>Agent Dashboard</h1>
+    <p>Диспетчерский пункт AI-агента</p>
+    <button id="btn-google-login" class="btn btn-primary btn-large">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18z"/><path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17z"/><path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07z"/><path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3z"/></svg>
+      Войти через Google
+    </button>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app" class="app hidden">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">⚡</span>
+      <span class="sidebar-title">Agent</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#" class="nav-link active" data-page="graph">
+        <span class="nav-icon">🕸️</span> Граф
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="dashboard">
+        <span class="nav-icon">📊</span> Dashboard
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="kanban">
+        <span class="nav-icon">📋</span> Канбан
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="projects">
+        <span class="nav-icon">📁</span> Проекты
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="plans">
+        <span class="nav-icon">🗺️</span> Планы
+      </a></li>
+      <li><a href="#" class="nav-link" data-page="skills">
+        <span class="nav-icon">⚙️</span> Скиллы
+      </a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <img id="user-avatar" src="" alt="" class="avatar">
+        <span id="user-name" class="user-name-text"></span>
+      </div>
+      <button id="btn-logout" class="btn-logout" title="Выйти">↩</button>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <div id="page-graph"     class="page active"></div>
+    <div id="page-dashboard" class="page"></div>
+    <div id="page-kanban"    class="page"></div>
+    <div id="page-projects"  class="page"></div>
+    <div id="page-plans"     class="page"></div>
+    <div id="page-skills"    class="page"></div>
+  </main>
+</div>
+
+<!-- MODAL -->
+<div id="modal-overlay" class="modal-overlay hidden">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-title">Задача</h3>
+      <button id="modal-close" class="modal-close">✕</button>
+    </div>
+    <div id="modal-body" class="modal-body"></div>
+    <div class="modal-footer">
+      <button id="modal-delete" class="btn btn-danger hidden">Удалить</button>
+      <button id="modal-cancel" class="btn btn-secondary">Отмена</button>
+      <button id="modal-save"   class="btn btn-primary">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="agent-graph.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js?v=0.6.0"></script>
+</body>
+</html>

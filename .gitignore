@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+firebase-config.js
+serviceAccountKey.json
+kiwi_config.json
+*.sqlite3*
+*.log
+.firebase/
+.firebaserc
+node_modules/
+graph.json
+agent-graph.html
+artifact.html

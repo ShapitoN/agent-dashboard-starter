@@ -1,0 +1,21 @@
+[Unit]
+Description=AgentDesk Kanban dispatcher
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=%h/agent-dashboard-starter/.venv/bin/python %h/agent-dashboard-starter/agentdesk/board_worker.py
+WorkingDirectory=%h/agent-dashboard-starter/agentdesk
+Environment=PYTHONUNBUFFERED=1
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=%h/.config/agentdesk/environment
+Restart=on-failure
+RestartSec=20
+KillMode=control-group
+TimeoutStopSec=15
+UMask=0077
+StandardOutput=append:%h/.local/share/agentdesk/worker.log
+StandardError=append:%h/.local/share/agentdesk/worker.log
+
+[Install]
+WantedBy=default.target
